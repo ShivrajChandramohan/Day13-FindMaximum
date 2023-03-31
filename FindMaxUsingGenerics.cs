@@ -6,27 +6,49 @@ using System.Threading.Tasks;
 
 namespace FindMaximumValue
 {
-    public class FindMaxUsingGenerics<T> where T : IComparable
+    public class FindMax<T> where T : IComparable<T>
     {
-        public static T MaximumNum<T>(T FirstValue, T SecondValue, T ThirdValue) where T : IComparable
+        private T firstValue;
+        private T secondValue;
+        private T thirdValue;
+
+        public FindMax(T firstValue, T secondValue, T thirdValue)
         {
-            if (FirstValue.CompareTo(SecondValue) > 0 && FirstValue.CompareTo(ThirdValue) > 0 ||
-               FirstValue.CompareTo(SecondValue) >= 0 && FirstValue.CompareTo(ThirdValue) > 0 ||
-               FirstValue.CompareTo(SecondValue) > 0 && FirstValue.CompareTo(ThirdValue) > 0)
-            { return FirstValue; }
+            this.firstValue = firstValue;
+            this.secondValue = secondValue;
+            this.thirdValue = thirdValue;
+        }
 
-            if (SecondValue.CompareTo(FirstValue) > 0 && SecondValue.CompareTo(ThirdValue) > 0 ||
-              SecondValue.CompareTo(FirstValue) >= 0 && SecondValue.CompareTo(ThirdValue) > 0 ||
-               SecondValue.CompareTo(FirstValue) > 0 && SecondValue.CompareTo(ThirdValue) > 0)
-            { return SecondValue; }
+        public T MaximumNum(T firstValue, T secondValue, T thirdValue)
+        {
+            if (firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) > 0 ||
+                firstValue.CompareTo(secondValue) >= 0 && firstValue.CompareTo(thirdValue) > 0 ||
+                firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) >= 0)
+            {
+                return firstValue;
+            }
 
-            if (ThirdValue.CompareTo(FirstValue) > 0 && ThirdValue.CompareTo(SecondValue) > 0 ||
-              ThirdValue.CompareTo(FirstValue) >= 0 && ThirdValue.CompareTo(SecondValue) > 0 ||
-              ThirdValue.CompareTo(FirstValue) > 0 && ThirdValue.CompareTo(SecondValue) > 0)
-            { return ThirdValue; }
+            if (secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) > 0 ||
+                secondValue.CompareTo(firstValue) >= 0 && firstValue.CompareTo(thirdValue) > 0 ||
+                secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) >= 0)
+            {
+                return secondValue;
+            }
 
+            if (thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) > 0 ||
+                thirdValue.CompareTo(firstValue) >= 0 && thirdValue.CompareTo(secondValue) > 0 ||
+                thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) >= 0)
+            {
+                return thirdValue;
+            }
 
-            return FirstValue;
+            return firstValue;
+        }
+
+        public T TestMaximum()
+        {
+            T max = MaximumNum(this.firstValue, this.secondValue, this.thirdValue);
+            return max;
         }
     }
 }
