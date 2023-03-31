@@ -4,22 +4,17 @@
     {
         public static void Main()
         {
-            int[] valuesInt = { 1, 2, 3, 4, 5 };
-            double[] valuesDouble = { 10.4, 6.7, 8.2, 9.5, 7.3 };
-            string[] valuesString = { "ram", "shiv", "radha", "mohan" };
+            Console.WriteLine("Please Enter the FirstValue:");
+            var val1 = Console.ReadLine();
+            Console.WriteLine("Please Enter the SecondValue:");
+            var val2 = Console.ReadLine();
+            Console.WriteLine("Please Enter the ThirdValue:");
+            var val3 = Console.ReadLine();
 
-            FindMax<int> obj = new FindMax<int>(valuesInt);
-            obj.PrintMax();
-            Console.WriteLine("**********************************************");
+            var Value = FindMaxUsingGenerics.MaximumNum(val1, val2, val3);
+            Console.WriteLine("{0} is greater", Value);
+            Console.WriteLine("**************************************");
 
-
-            FindMax<double> obj1 = new FindMax<double>(valuesDouble);
-            obj1.PrintMax();
-            Console.WriteLine("**********************************************");
-
-            FindMax<string> obj2 = new FindMax<string>(valuesString);
-            string MaxString = obj2.TestMaximum();
-            obj2.PrintMax();
 
         }
     }
